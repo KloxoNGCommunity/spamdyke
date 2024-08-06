@@ -1,7 +1,7 @@
 Summary:	A drop-in connection-time spam filter for qmail.
 Name:		spamdyke
 Version:	5.0.1
-Release:	3.kng%{?dist}
+Release:	5.kng%{?dist}
 License:	GPL
 Group:		Applications/Internet
 Packager:	Mustafa Ramadhan <mustafa.ramadhan@lxcenter.org>
@@ -10,9 +10,9 @@ Source:	http://www.spamdyke.org/releases/%{name}-%{version}-full.tgz
 Source1:	spamdyke.cron
 Source2:	spamdyke5.conf
 Source3:	spamdyke.sql
-#Patch1:	spamdyke-4.1.0-mysql.patch
+Patch0:    spamdyke-openssl.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root-%(id -u -n)
-BuildRequires:	mysql-devel 
+BuildRequires:	mariadb-devel 
 BuildRequires:	vpopmail-toaster >= 5.4.1 
 BuildRequires:	openssl-devel
 BuildRequires:  make
@@ -40,7 +40,7 @@ These are some additional programs for spamdyke.
 
 %setup
 # Not yet
-#%patch1 -p1
+%patch0 -p1
 
 %build
 export LDFLAGS="-g -L%{_libdir}/mysql"
@@ -57,7 +57,8 @@ cd ../spamdyke-qrv
 %configure --with-excessive-output \
 	--with-vpopmail-support \
 		VALIAS_PATH=/home/vpopmail/bin/valias \
-		VUSERINFO_PATH=/home/vpopmail/bin/vuserinfo
+		VUSERINFO_PATH=/home/vpopmail/bin/vuserinfo \
+	--enable-tls
 make
 
 %install
