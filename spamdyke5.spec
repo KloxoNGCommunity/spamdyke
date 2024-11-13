@@ -1,7 +1,7 @@
 Summary:	A drop-in connection-time spam filter for qmail.
 Name:		spamdyke
 Version:	5.0.1
-Release:	7.kng%{?dist}
+Release:	8.kng%{?dist}
 License:	GPL
 Group:		Applications/Internet
 Packager:	Mustafa Ramadhan <mustafa.ramadhan@lxcenter.org>
@@ -156,6 +156,11 @@ fi
 %{_bindir}/domain*
 
 %changelog
+* Wed Nov 13 2024 John Pierce <john@luckytanuki.com>  5.0.1-8.kng
+- Upgrade for EL 8/ 9 BUILDS
+- improve ssl support
+- use vpopmail for auth rather than qmail
+
 * Mon Dec 23 2019 John Pierce <john@luckytanuki.com>  5.0.1-2.kng
 - Fix warning: File listed twice errors
 
