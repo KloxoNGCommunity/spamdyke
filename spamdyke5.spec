@@ -1,7 +1,7 @@
 Summary:	A drop-in connection-time spam filter for qmail.
 Name:		spamdyke
 Version:	5.0.1
-Release:	8.kng%{?dist}
+Release:	9.kng%{?dist}
 License:	GPL
 Group:		Applications/Internet
 Packager:	Mustafa Ramadhan <mustafa.ramadhan@lxcenter.org>
@@ -40,7 +40,7 @@ These are some additional programs for spamdyke.
 
 %setup
 # Not yet
-%patch0 -p1
+%patch 0 -p1
 
 %build
 export LDFLAGS="-g -L%{_libdir}/mysql"
